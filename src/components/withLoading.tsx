@@ -1,7 +1,14 @@
+import React from "react";
 import { Spinner } from "react-bootstrap";
 
-export function withLoading(WrappedComponent: any) {
-  return function WithLoadingComponent(props: any) {
+interface WithLoadingInterface {
+  isLoading: boolean;
+}
+
+export function withLoading<T>(
+  WrappedComponent: React.ComponentType<T & WithLoadingInterface>
+) {
+  return function WithLoadingComponent(props: T & WithLoadingInterface) {
     if (!props.isLoading) return <WrappedComponent {...props} />;
     return (
       <div className="mt-4 py-5 d-flex justify-content-center">

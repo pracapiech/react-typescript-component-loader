@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 export default function App() {
   const [isUsersLoading, setIsUsersLoading] = useState<boolean>(true);
   const [users, setUsers] = useState<UsersInterface[]>([]);
-  const UsersTableWithLoading = withLoading(UsersTable);
+  const UsersTableWithLoading = withLoading<{users: UsersInterface[]}>(UsersTable);
 
   useEffect(() => {
     setIsUsersLoading(true);
